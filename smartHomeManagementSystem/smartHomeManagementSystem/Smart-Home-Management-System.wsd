@@ -1,0 +1,40 @@
+@startuml
+title Smart-Home-Management-System
+interface Controllable{
+    +turnOn():void
+    +turnOff():void
+    +getStatus():bool
+}
+class Appliance{
+    -status:bool
+    --
+    +turnOn():void
+    +turnOff():void
+    +getStatus():bool
+    +setStatus(bool status):void
+}
+class Light{
+    +turnOn()
+    +turnOff()
+    +getStatus()
+    +controlLight()
+}
+class Thermostat{
+    +turnOn()
+    +turnOff()
+    +getStatus()
+    +setTemperature()
+}
+class SecuritySystem{
+    +turnOn()
+    +turnOff()
+    +getStatus()
+    +activateAlarm()
+} 
+
+Appliance .up-|> Controllable : <<implaments>>
+Light -up-|> Appliance : <<extends>>
+Thermostat -up-|> Appliance : <<extends>>
+SecuritySystem -up-|> Appliance : <<extends>>
+hide empty members
+@enduml
